@@ -54,6 +54,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchWeather }, dispatch);
 }
 
-//when you use export defualt here, remember to take out
+//when you use export default here, remember to take out
 //export default from class component up top.
 export default connect(null, mapDispatchToProps)(SearchBar);

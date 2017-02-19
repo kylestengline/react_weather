@@ -2,14 +2,13 @@ import axios from 'axios';
 import WEATHER_API from '../../keys';
 
 export const FETCH_WEATHER = 'FETCH_WEATHER';
-const ROOT_URL = `http://samples.openweathermap.org/data/2.5/forecast?appid=${WEATHER_API}`; 
+const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${WEATHER_API}`; 
 
 export function fetchWeather(city) {
   const url = `${ROOT_URL}&q=${city},us`;
-  //take url we crafted, and make a get request on it.
+  //take url we crafted, and make an ajax get request.
+  //this returns a promise
   const request = axios.get(url);
-
-  console.log('Request:', request);
 
   return {
     type: FETCH_WEATHER,

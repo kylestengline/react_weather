@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class WeatherList extends Component {
+  renderWeather(cityData) {
+    //when adding a list, we must:
+    //add a key to the react list, 
+    //we must add the key to the top level element
+    //which has to be a unique piece of data.
+    const name = cityData.city.name;
+
+    return (
+      <tr key={ name }>
+        <td>{ name }</td>
+      </tr>
+    ); 
+  }
+
   render() {
     return (
       <table className="table table-hover">
@@ -14,6 +28,7 @@ class WeatherList extends Component {
           </tr>
         </thead>
         <tbody>
+          {this.props.weather.map(this.renderWeather)}
         </tbody>
       </table>
     );

@@ -7,7 +7,7 @@ export default function(state = [], action) {
     case FETCH_WEATHER: 
       //insert new record with action.payload, then another record
       //where ...state is.
-      //JSX syntax
+      //ES6 syntax
       return [ action.payload.data, ...state ]; 
       //output from above: [ city, city, city ]
   }

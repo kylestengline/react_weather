@@ -19,6 +19,6 @@ export function fetchWeather(city) {
 //that can contain some additional data that describes this particular action
 
 //backticks are ES6 syntax
-//thess are called template strings.
+//these are called template strings.
 //they take one string and a js variable, 
 //it injects that js variable into the string

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from '../components/chart';
+import GoogleMap from '../components/google_map';
 
 class WeatherList extends Component {
   renderWeather(cityData) {
@@ -12,13 +13,15 @@ class WeatherList extends Component {
     const temps = _.map(cityData.list.map(weather => weather.main.temp), (temp) => temp - 273);
     const pressures = cityData.list.map(weather => weather.main.pressure);
     const humidities = cityData.list.map(weather => weather.main.humidity);
+    //ES6 to grab lon and lat from coord.
+    const {lat, lon } = cityData.city.coord;
 
     //if you find yourself replicating markup,
     //like we did with generating the chart with sparklines
     //you will most likely be able to create a separate component
     return (
       <tr key={ name }>
-        <td>{ name }</td>
+        <td><GoogleMap lon={lon} lat={lat} /></td>
         <td><Chart data={ temps } color="green" units="C" /></td>
         <td><Chart data={ pressures } color="red" units="hPa" /></td>
         <td><Chart data={ humidities } color="black" units="%" /></td>

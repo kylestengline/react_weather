@@ -6,8 +6,6 @@ const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${WEATHE
 
 export function fetchWeather(city) {
   const url = `${ROOT_URL}&q=${city},us`;
-  //take url we crafted, and make an ajax get request.
-  //this returns a promise
   const request = axios.get(url);
 
   return {
@@ -15,10 +13,3 @@ export function fetchWeather(city) {
     payload: request
   };
 }
-//payload is an optional property that goes along with actions 
-//that can contain some additional data that describes this particular action
-
-//backticks are ES6 syntax
-//these are called template strings.
-//they take one string and a js variable, 
-//it injects that js variable into the string

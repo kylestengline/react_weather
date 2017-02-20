@@ -5,20 +5,12 @@ import GoogleMap from '../components/google_map';
 
 class WeatherList extends Component {
   renderWeather(cityData) {
-    //when adding a list, we must:
-    //add a key to the react list, 
-    //we must add the key to the top level element
-    //which has to be a unique piece of data.
     const name = cityData.city.name;
     const temps = _.map(cityData.list.map(weather => weather.main.temp), (temp) => temp - 273);
     const pressures = cityData.list.map(weather => weather.main.pressure);
     const humidities = cityData.list.map(weather => weather.main.humidity);
-    //ES6 to grab lon and lat from coord.
     const {lat, lon } = cityData.city.coord;
 
-    //if you find yourself replicating markup,
-    //like we did with generating the chart with sparklines
-    //you will most likely be able to create a separate component
     return (
       <tr key={ name }>
         <td><GoogleMap lon={lon} lat={lat} /></td>
@@ -49,8 +41,7 @@ class WeatherList extends Component {
 }
 
 function mapStateToProps({ weather }) {
-  return { weather }; // equal to { weather: weather }
+  return { weather }; 
 }
 
-//hooking up to redux state
 export default connect(mapStateToProps)(WeatherList);
